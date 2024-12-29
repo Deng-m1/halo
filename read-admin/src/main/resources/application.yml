@@ -6,11 +6,23 @@ spring:
     url: r2dbc:mysql://localhost:3306/reader_db
     username: root
     password: your_password
-  
   security:
     jwt:
-      secret: your-secret-key-here-must-be-at-least-32-chars
-      expiration: 86400000 # 24 hours
+      secret: 5426535
+      access-token-expiration: 3600000  # 1小时
+      refresh-token-expiration: 2592000000  # 30天
+      issuer: reader-admin
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: your-email@example.com
+    password: your-password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 logging:
   level:
@@ -19,7 +31,11 @@ logging:
 
 aliyun:
   sms:
-    access-key-id: ${ALIYUN_ACCESS_KEY_ID}
-    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET}
+    access-key-id: 3213211
+    access-key-secret: 54353453
     sign-name: YourSignName
     template-code: SMS_XXXXXXXX
+
+app:
+  mail:
+    from: your-email@example.com

@@ -1,13 +1,25 @@
 package com.reader.interfaces.web.response;
 
-import lombok.Data;
+import com.reader.domain.user.vo.ImageCaptcha;
+import lombok.Value;
 
-@Data
+@Value
 public class CaptchaResponse {
-    private String captchaId;
-    private String imageBase64;
+    String id;
+    String imageBase64;
 
-    public CaptchaResponse(String captchaId) {
-        this.captchaId = captchaId;
+    public CaptchaResponse(ImageCaptcha captcha) {
+        this.id = captcha.getId();
+        this.imageBase64 = convertImageToBase64(captcha.getImage());
+    }
+
+    private String convertImageToBase64(java.awt.image.BufferedImage image) {
+        try {
+            java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
+            javax.imageio.ImageIO.write(image, "PNG", out);
+            return java.util.Base64.getEncoder().encodeToString(out.toByteArray());
+        } catch (java.io.IOException e) {
+            throw new RuntimeException("Failed to convert image to Base64", e);
+        }
     }
 } 

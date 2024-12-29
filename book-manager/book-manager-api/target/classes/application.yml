@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/book_manager
+  
+  webflux:
+    base-path: /api
+
+logging:
+  level:
+    com.book: DEBUG
+    org.springframework.data.mongodb: DEBUG 
+
+aliyun:
+  accessKeyId: ${ALIYUN_ACCESS_KEY_ID}
+  accessKeySecret: ${ALIYUN_ACCESS_KEY_SECRET}
+  nlp:
+    endpoint: nlp.cn-hangzhou.aliyuncs.com 

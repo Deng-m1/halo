@@ -72,4 +72,12 @@ public class R2dbcUserRepository implements UserRepository {
             User.class
         );
     }
+
+    @Override
+    public Mono<Boolean> existsByPhoneNumber(String phoneNumber) {
+        return template.exists(
+            Query.query(Criteria.where("phone_number").is(phoneNumber)),
+            User.class
+        );
+    }
 } 

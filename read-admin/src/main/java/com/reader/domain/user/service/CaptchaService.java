@@ -1,6 +1,7 @@
 package com.reader.domain.user.service;
 
 import com.reader.domain.user.vo.CaptchaCode;
+import com.reader.domain.user.vo.ImageCaptcha;
 import reactor.core.publisher.Mono;
 
 public interface CaptchaService {

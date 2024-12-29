@@ -12,4 +12,5 @@ public interface UserRepository {
     Mono<Void> deleteById(Long id);
     Mono<Boolean> existsByUsername(String username);
     Mono<Boolean> existsByEmail(String email);
+    Mono<Boolean> existsByPhoneNumber(String phoneNumber);
 } 

@@ -3,7 +3,9 @@ package com.reader.domain.user.service.impl;
 import com.reader.domain.user.service.SmsService;
 import com.reader.domain.user.vo.PhoneNumber;
 import com.reader.domain.user.vo.SmsCode;
+import com.reader.infrastructure.sms.SmsProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -13,6 +15,7 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class SmsServiceImpl implements SmsService {
+    @Qualifier("reactiveStringRedisTemplate")
     private final ReactiveRedisTemplate<String, String> redisTemplate;
     private final SmsProvider smsProvider;
     private static final String SMS_PREFIX = "sms:";
